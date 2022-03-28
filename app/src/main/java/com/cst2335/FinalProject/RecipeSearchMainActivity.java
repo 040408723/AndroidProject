@@ -1,4 +1,4 @@
-
+package com.cst2335.FinalProject;
 import static android.provider.Settings.System.getString;
 
 import android.app.AlertDialog;
@@ -30,7 +30,7 @@ import java.util.List;
 
 public class RecipeSearchMainActivity extends AppCompatActivity {
     private ProgressDialog loading = null;
-    //private NutritionJsonAdapter adapter;
+    private NutritionJsonAdapter adapter;
     private EditText searchEditText;
     private Button btnSave;
     private Button btnFavourite;
@@ -38,7 +38,7 @@ public class RecipeSearchMainActivity extends AppCompatActivity {
     private ListView listView;
     protected static final String ACTIVITY_NAME = "NutritionSearchActivity";
     private String app_id = "40cb1f76", app_key = "9dd571cf4d9e83a7796c460130be79dd";
-    //private List<NutritionNewBean> newBeanList = new ArrayList<>();
+    private List<NutritionNewBean> newBeanList = new ArrayList<>();
     public static String food;
     private String jsonUrl = " https://api.edamam.com/api/food-database/parser?ingr=" + food + "&app_id=" + app_id + "&app_key=" + app_key;
     private RecipeDatabaseHelper foodDatabaseHelper = new RecipeDatabaseHelper(this);
