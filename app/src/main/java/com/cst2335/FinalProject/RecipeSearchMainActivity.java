@@ -53,12 +53,12 @@ public class RecipeSearchMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.RecipeSearch);
 
-        ListView listView = findViewById(R.id.searchResult);
-        EditText searchEditText =findViewById(R.id.searchText);
+        listView = findViewById(R.id.searchResult);
+        searchEditText =findViewById(R.id.searchText);
 
-        Button btnSearch =findViewById(R.id.btn_search);
-        Button btnSave = findViewById(R.id.btn_save);
-        Button btnFavourite = findViewById(R.id.btn_favourite);
+        btnSearch =findViewById(R.id.btn_search);
+        btnSave = findViewById(R.id.btn_save);
+        btnFavourite = findViewById(R.id.btn_favourite);
 
         Toolbar tBar = findViewById(R.id.recipe_toolbar);
         setSupportActionBar(tBar);
