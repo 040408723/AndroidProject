@@ -38,10 +38,10 @@ public class RecipeSearchMainActivity extends AppCompatActivity {
     private ListView listView;
     protected static final String ACTIVITY_NAME = "NutritionSearchActivity";
     private String app_id = "40cb1f76", app_key = "9dd571cf4d9e83a7796c460130be79dd";
-    private List<RecipeNewBean> newBeanList = new ArrayList<>();
+    private List<RecipeNewData> newBeanList = new ArrayList<>();
     public static String food;
     private String jsonUrl = " https://api.edamam.com/api/food-database/parser?ingr=" + food + "&app_id=" + app_id + "&app_key=" + app_key;
-    private RecipeDatabaseHelper foodDatabaseHelper = new RecipeDatabaseHelper(this);
+    private RecipeDatabaseHelper recipeDatabaseHelper = new RecipeDatabaseHelper(this);
 
     /**
      * to create the search activity
@@ -108,7 +108,7 @@ public class RecipeSearchMainActivity extends AppCompatActivity {
      * @param fat  the detail that needs to be insterted in the fat column
      */
     public void AddData(String food, double cal, double fat) {
-        boolean insertData = foodDatabaseHelper.addData(food, cal, fat);
+        boolean insertData = recipeDatabaseHelper.addData(food, cal, fat);
         if (insertData) {
             toastMessage(getString(R.string.data_insert));
         } else {
@@ -119,9 +119,9 @@ public class RecipeSearchMainActivity extends AppCompatActivity {
     /**
      * inner class to parse the API KEY
      */
-    class MyAsyncTask extends AsyncTask<String, Void, List<NutritionNewBean>> {
+    class MyAsyncTask extends AsyncTask<String, Void, List<RecipeNewData>> {
         private String jsonUrl = " https://api.edamam.com/api/food-database/parser?ingr=" + food + "&app_id=" + app_id + "&app_key=" + app_key;
-        NutritionJsonData jsonData = new NutritionJsonData();
+        FoodData jsonData = new FoodData();
 
         /**
          * the get the data from the Json Object
@@ -130,7 +130,7 @@ public class RecipeSearchMainActivity extends AppCompatActivity {
          * @return the data of the Json Object
          */
         @Override
-        protected List<NutritionNewBean> doInBackground(String... params) {
+        protected List<RecipeNewData> doInBackground(String... params) {
             return newBeanList = jsonData.getJsonData(jsonUrl);
         }
 
@@ -153,7 +153,7 @@ public class RecipeSearchMainActivity extends AppCompatActivity {
          * @param result the data from the Json Object
          */
         @Override
-        protected void onPostExecute(List<NutritionNewBean> result) {
+        protected void onPostExecute(List<RecipeNewData> result) {
             super.onPostExecute(result);
             adapter = new RecipeAdapter(RecipeSearchMainActivity.this, newBeanList);
             listView.setAdapter(adapter);

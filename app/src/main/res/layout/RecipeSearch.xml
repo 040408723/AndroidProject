@@ -27,7 +27,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="60dp"
-        android:text="@string/btn_save" />
+        android:text="@string/save" />
 
     <Button
         android:id="@+id/btn_favourite"
@@ -46,7 +46,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="101dp"
-        android:text="@string/searchText" />
+        android:text="@string/search" />
 
     <Button
         android:layout_width="wrap_content"
